@@ -5,42 +5,42 @@
   <img src="https://img.shields.io/badge/License-MIT-amber.svg?style=for-the-badge" alt="License">
 </p>
 
-<h1 align="center">🏝️ NotchIsland 3.0 : The Liquid Glass Dynamic Island for MacBook Notch</h1>
+<h1 align="center">🏝️ NotchIsland 3.0 : The Liquid Glass AI HUD for MacBook Notch</h1>
 
 <h3 align="center">
-  Turn your useless MacBook Notch into an interactive, hardware-accelerated AI HUD for <b>Claude Code</b>, <b>Antigravity CLI</b>, <b>Cursor</b>, and macOS System Telemetry.
+  Turn your useless MacBook Notch into a hardware-accelerated AI Command Center for <b>Claude Code</b>, <b>Antigravity CLI</b>, <b>Cursor</b>, and Terminal Coding Agents.
 </h3>
 
 <p align="center">
+  <a href="#-what-is-notchisland-">What is it?</a> •
+  <a href="#-claude-code--terminal-agents-integration">Claude Code Setup</a> •
   <a href="#-key-features">Features</a> •
-  <a href="#-claude-code--agent-integration">Claude Code Setup</a> •
   <a href="#-installation--build">Installation</a> •
-  <a href="#-model-context-protocol-mcp">MCP Server</a> •
-  <a href="#-architecture">Architecture</a>
+  <a href="#-model-context-protocol-mcp">MCP Server</a>
 </p>
 
 ---
 
 ## ⚡ What is NotchIsland ?
 
-Most MacBook apps treat the screen notch as an annoyance to hide. **NotchIsland transforms it into your primary AI command center.**
+Most developers treat the MacBook screen notch as dead space. **NotchIsland transforms it into the visual notification HUD for autonomous coding agents.**
 
-Engineered natively in **Swift, AppKit, and Liquid Glass 3D shaders** (zero webview bloat, 0.0% idle CPU), NotchIsland hugs the physical notch with sub-millimeter precision ($179 \times 32\,\text{mm}$) and expands fluidly to deliver **real-time AI agent status**, **live coding telemetry**, **Apple Music scrubbing**, **smart MagSafe charging wattage**, and a **quick-drop file staging shelf**.
+Built natively in **Swift, AppKit, and Liquid Glass 3D shaders** (zero webview bloat, 0.0% idle CPU), NotchIsland hugs the physical notch with millimeter precision ($179 \times 32\,\text{mm}$) and expands fluidly to display **live agent thought progress**, **task completions**, **build statuses**, and a **quick-drop file shelf**.
 
 ---
 
-## 🤖 Claude Code & AI Agents Integration
+## 🤖 Claude Code & Terminal Agents Integration
 
-> **The missing visual interface for headless terminal agents.**
+> **The missing visual interface for headless terminal coding.**
 
-When you run long agentic sessions with **Claude Code**, **Antigravity CLI**, or **Gemini**, you normally have to keep alt-tabbing to see if the model has finished thinking or requires tool permission.
+When you run long tasks with **Claude Code**, **Antigravity CLI**, or **Gemini**, you constantly have to switch windows to see if the model has finished running tests or needs approval.
 
-**NotchIsland connects directly to Claude Code via MCP and IPC :**
-- 🧠 **Live Thought Bubbles :** As Claude analyzes your codebase, status pills pulse beneath the notch.
-- 🔔 **Instant Completion Banners :** When a task or unit test suite finishes, a discreet glass notification slides out.
-- ⚠️ **Action Required Alert :** Flashes an amber indicator when an agent is waiting for human input.
+**NotchIsland connects directly to Claude Code via MCP and native IPC :**
+- 🧠 **Live Thought Bubbles :** As Claude analyzes your codebase or runs tool calls, an animated status pill pulses discreetly beneath the notch.
+- 🔔 **Instant Completion Banners :** When a task, test suite, or git commit finishes, a sleek glass banner drops down with the summary.
+- ⚠️ **Action Required Indicator :** Illuminates when an agent is paused waiting for user input or approval.
 
-### Add to Claude Code (`claude_desktop_config.json` or MCP Settings) :
+### Add to Claude Code (`claude_desktop_config.json` or MCP settings) :
 ```json
 {
   "mcpServers": {
@@ -52,9 +52,9 @@ When you run long agentic sessions with **Claude Code**, **Antigravity CLI**, or
 }
 ```
 
-Now Claude can notify you anytime using native tool calling:
+Now Claude Code can notify you directly:
 ```python
-# What Claude Code calls internally
+# What Claude Code calls automatically
 notch_island_notify(
     message="Build succeeded! 42 tests passing in 1.4s",
     title="Claude Code"
@@ -65,11 +65,10 @@ notch_island_notify(
 
 ## 🌟 Key Features
 
-* **🪟 Apple Liquid Glass 3D Material :** Custom NSView rendering authentic specular chamfers, progressive blur, and fluid spring physics inspired by Apple visionOS.
-* **🎵 Native Apple Music & Spotify Bridge :** Shows currently playing track title, artist, and an interactive micro-scrubber with smooth progress bars.
-* **⚡ Smart MagSafe Power Monitor :** Real-time charging wattage ($W$), battery health, and dynamic power draw tracking directly under the notch.
-* **📂 Staging Shelf (File Drop Zone) :** Drag and drop files directly onto the notch to temporarily hold them before pasting into Claude, Cursor, or Slack.
-* **🚀 Zero-Jank 60/120Hz ProMotion :** 100% native Cocoa code compiled with `swiftc` — no Electron, no heavy frameworks, strictly under 15MB RAM.
+* **🪟 Apple Liquid Glass 3D Material :** Native NSView rendering authentic specular chamfers, progressive blur, and fluid spring physics inspired by Apple visionOS.
+* **📂 Staging Shelf (File Drop Zone) :** Drag and drop files or screenshots directly onto the notch to hold them temporarily before pasting into Claude, Cursor, or your terminal.
+* **⚡ Smart MagSafe Power Monitor :** Real-time charging wattage ($W$), battery level, and dynamic draw tracking directly under the notch.
+* **🚀 Zero-Jank 60/120Hz ProMotion :** 100% native Cocoa code compiled with `swiftc` — zero Electron, zero webviews, strictly under 15MB RAM footprint.
 
 ---
 
@@ -81,17 +80,17 @@ git clone https://github.com/bapt-eng/notch-island.git
 cd notch-island
 
 # Compile native binary with swiftc
-swiftc -O src/NotchIsland.swift src/LiquidGlassView.swift src/SpotifyBridge.swift \
+swiftc -O src/NotchIsland.swift src/LiquidGlassView.swift \
   -o NotchIsland -framework AppKit -framework IOKit -framework WebKit
 
 # Run immediately
 ./NotchIsland
 ```
 
-### CLI One-Liner Notification :
+### CLI Notification Hook :
 Send instant alerts from any bash script, Makefile, or Git hook:
 ```bash
-./hooks/claude_code_hook.sh "Refactoring complete! All clean." "Antigravity Agent"
+./hooks/claude_code_hook.sh "Unit tests passed! Ready to deploy." "Claude Code"
 ```
 
 ---
@@ -100,8 +99,8 @@ Send instant alerts from any bash script, Makefile, or Git hook:
 
 | Tool | Parameters | Description |
 | :--- | :--- | :--- |
-| `notch_island_notify` | `message` (str), `title` (str) | Expands the notch island with an elegant animated status banner |
-| `notch_island_status` | none | Returns current hardware battery watts, playing track, and agent state |
+| `notch_island_notify` | `message` (str), `title` (str) | Expands the notch island with an elegant animated glass notification banner |
+| `notch_island_status` | none | Returns current hardware battery watts and active agent status |
 
 ---
 
